@@ -10,23 +10,23 @@ Alexandr Poltavsky
 #include <cstdio>
 #include <cmath>
 
-int main() {
-
+void print_fp( float number, int digits ) {
     union {
         float d;
         int u;
     };
+    
+    d = number;
 
-    d = -0.00594;
+    //deal with sign
+    bool minus = u >> 31; 
+    u = u & ~(1 << 31); 
+    
+    //calculate base-10 exponent
+    double exp = (u >> 23) - 127;
+    double exp10 = exp / log2( 10.0 );
 
-    printf("%.10f\n", d); //original numer
-
-    bool minus = u >> 31; //store sign
-    u = u & ~(1 << 31); //clear sign
-    double exp = (u >> 23) - 127; //extract exponent
-    double exp10 = exp / log2( 10.0 ); //compute base-10
-
-    //adjust the number
+    //adjust the number 
     u = (u & ~(0xFF << 23)) | (127 << 23);
     double d2 = double(d) * pow( 10.0, exp10 - int(exp10) ); 
     if( d2 >= 10.0 ) { d2 = d2 / 10.0; exp10+=1.0; }
@@ -40,9 +40,6 @@ int main() {
     printf("%.1d.", i);
     d2 = d2 - i;
 
-    //print the rest
-    int digits = 10; 
-
     while( digits-- ) { 
         d2 = d2 * 10.0;
         int i = int( d2 );
@@ -51,7 +48,20 @@ int main() {
     }
 
     //print exponent part
-    printf("e%d", int(exp10));
+    printf("e%d\n", int(exp10));
+}
+
+int main() {
+
+    double d;
+
+    d = 8.589973e9;
+    printf("%.10f\n", d);
+    print_fp( d , 10 );
+
+    d = 8.589974e9;
+    printf("%.10f\n", d);
+    print_fp( d , 10 );
 
 }
 
