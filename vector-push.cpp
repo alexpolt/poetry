@@ -1,5 +1,5 @@
 /*
-  The right way to overload operator<< and operator>>
+  That's how operator<< and >> should've been overloaded. 
   Alexandr Poltavsky
 */
 
