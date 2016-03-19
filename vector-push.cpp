@@ -1,9 +1,10 @@
+/*
+  The right way to overload operator<< and operator>>
+  Alexandr Poltavsky
+*/
 
 #include <vector>
 #include <iostream>
-
-//The right way to overload operator<< and operator>>
-//Alexandr Poltavsky
 
 template<class T0, class T1> std::vector<T0>& operator<<( std::vector<T0>& vec, T1&& value ) {
   vec.push_back( std::forward<T1>( value ) );
