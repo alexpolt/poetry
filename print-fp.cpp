@@ -1,6 +1,6 @@
 /*
 
-Print-format a 32-bit float by exploiting exponent.
+Print-format a 32-bit float by exploiting exponent
 Blog post: http://alexpolt.github.io/print-fp.html
 
 Alexandr Poltavsky
