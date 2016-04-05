@@ -2,7 +2,7 @@
 
 Macro kung fu to have code like this:
 
-#define FAILED( args ) ...
+#define FAILED( $0 ) ...
 
 $checkall( FAILED, f1(), f2(), f3() ) 
 
