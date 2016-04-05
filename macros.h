@@ -6,7 +6,6 @@ Macro kung fu to have code like this:
 
 $checkall( FAILED, f1(), f2(), f3() ) 
 
-
 Alexandr Poltavsky
 
 */
@@ -25,7 +24,7 @@ Alexandr Poltavsky
 #define $check2( $macro, $1, $2 ) $check1( $macro, $1 ) $check1( $macro, $2 )
 #define $check3( $macro, $1, $2, $3 ) $check2( $macro, $1, $2 ) $check1( $macro, $3 )
 
-//using $numargs and $paste to get the right above macro name
+//using $numargs and $paste to get the correct macro name
 #define $checkall_( $macro, $check, ... ) $check( $macro, __VA_ARGS__ )
 #define $checkall( $macro, ... ) $checkall_( $macro, $paste( $check, $numargs(__VA_ARGS__) ), __VA_ARGS__ )
 
