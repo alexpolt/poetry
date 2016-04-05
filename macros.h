@@ -15,8 +15,8 @@ Alexandr Poltavsky
 #define $numargs_( $1, $2, $3, N, ... ) N
 #define $numargs( ... ) $numargs_( __VA_ARGS__, 3, 2, 1 )
 
-#define $paste_( v0, v1 ) v0 ## v1
-#define $paste( v0, v1 ) $paste_( v0, v1 )
+#define $paste_( $0, $1 ) $0 ## $1
+#define $paste( $0, $1 ) $paste_( $0, $1 )
 
 //maximum is 3 arguments
 //easy to get more
