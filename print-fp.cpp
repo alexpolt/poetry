@@ -10,7 +10,7 @@ Alexandr Poltavsky
 #include <cstdio>
 #include <cmath>
 
-void print_fp( float number, int digits ) {
+void print_fp( float number, int digits_count ) {
     union {
         float d;
         int u;
@@ -35,16 +35,16 @@ void print_fp( float number, int digits ) {
     static char digits[] = "0123456789";
 
     //print sign
-    if( minus ) putc( "-", stdout );
+    if( minus ) putc( '-', stdout );
 
     //print integer part
     int i = int( d2 );
     putc( digits[i], stdout );
-    putc( ".", stdout );
+    putc( '.', stdout );
     d2 = d2 - i;
 
     //print fractional part
-    while( digits-- ) { 
+    while( digits_count-- ) { 
         d2 = d2 * 10.0;
         int i = int( d2 );
         putc( digits[i], stdout );
